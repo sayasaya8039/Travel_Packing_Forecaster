@@ -1,0 +1,16 @@
+{
+  "name": "Travel Packing Forecaster",
+  "short_name": "PackingPro",
+  "description": "旅行先の天気予報に基づいて最適なパッキングリストを提案",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#EEF2FF",
+  "theme_color": "#3B82F6",
+  "icons": [
+    {
+      "src": "./vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
