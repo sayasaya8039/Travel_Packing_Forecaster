@@ -7,6 +7,7 @@ const app = new Hono();
 // CORS設定
 app.use('/*', cors({
   origin: [
+    'https://travel-packing-forecaster.pages.dev',
     'https://sayasaya8039.github.io',
     'http://localhost:5173',
     'http://localhost:4173',
