@@ -14,7 +14,16 @@ const categoryLabels: Record<PackingItem['category'], { label: string; icon: str
   toiletries: { label: '洗面用具', icon: '🧴' },
   electronics: { label: '電子機器', icon: '📱' },
   documents: { label: '書類', icon: '📄' },
+  cultural: { label: '文化対応', icon: '🎌' },
+  safety: { label: '安全・救急', icon: '🛡️' },
   other: { label: 'その他', icon: '📦' },
+};
+
+const warningBadges: Record<string, { label: string; className: string }> = {
+  'forgot-often': { label: '忘れがち', className: 'bg-orange-100 text-orange-600' },
+  cultural: { label: '文化', className: 'bg-purple-100 text-purple-600' },
+  safety: { label: '安全', className: 'bg-red-100 text-red-600' },
+  weather: { label: '天気', className: 'bg-sky-100 text-sky-600' },
 };
 
 export function PackingList({ items, onToggle, onRemove, onAdd }: Props) {
@@ -102,6 +111,11 @@ export function PackingList({ items, onToggle, onRemove, onAdd }: Props) {
                         {item.essential && !item.checked && (
                           <span className="ml-2 text-xs bg-red-100 text-red-600 px-2 py-0.5 rounded-full">
                             必須
+                          </span>
+                        )}
+                        {item.warning && !item.checked && warningBadges[item.warning] && (
+                          <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${warningBadges[item.warning].className}`}>
+                            {warningBadges[item.warning].label}
                           </span>
                         )}
                       </span>

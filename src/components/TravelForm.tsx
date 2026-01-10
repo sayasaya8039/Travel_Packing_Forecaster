@@ -74,24 +74,26 @@ export function TravelForm({ onSubmit, loading }: Props) {
         <label className="block text-sm font-medium text-gray-700 mb-2">
           旅行の目的
         </label>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-5 gap-2">
           {[
             { value: 'leisure', label: '観光', icon: '🏖️' },
             { value: 'business', label: '出張', icon: '💼' },
             { value: 'adventure', label: 'アクティブ', icon: '🏔️' },
+            { value: 'date', label: 'デート', icon: '💑' },
+            { value: 'camping', label: 'キャンプ', icon: '⛺' },
           ].map((opt) => (
             <button
               key={opt.value}
               type="button"
               onClick={() => setPurpose(opt.value as TravelInfo['purpose'])}
-              className={`px-4 py-3 rounded-xl border-2 transition-all ${
+              className={`px-2 py-3 rounded-xl border-2 transition-all ${
                 purpose === opt.value
                   ? 'border-blue-500 bg-blue-50 text-blue-700'
                   : 'border-gray-200 hover:border-gray-300'
               }`}
             >
               <span className="text-xl">{opt.icon}</span>
-              <span className="block text-sm mt-1">{opt.label}</span>
+              <span className="block text-xs mt-1">{opt.label}</span>
             </button>
           ))}
         </div>

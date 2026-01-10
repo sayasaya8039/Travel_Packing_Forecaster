@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { TravelForm } from './components/TravelForm';
 import { WeatherDisplay } from './components/WeatherDisplay';
 import { PackingList } from './components/PackingList';
+import { AlertDisplay } from './components/AlertDisplay';
 import { geocodeCity, getWeatherForecast } from './services/weatherApi';
-import { generatePackingList } from './services/packingSuggestion';
-import type { TravelInfo, WeatherData, PackingItem, GeoLocation } from './types';
+import { generatePackingSuggestions } from './services/packingSuggestion';
+import type { TravelInfo, WeatherData, PackingItem, GeoLocation, CountryAlert } from './types';
 
-const VERSION = '1.0.0';
+const VERSION = '2.0.0';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -14,6 +15,7 @@ function App() {
   const [weather, setWeather] = useState<WeatherData[]>([]);
   const [location, setLocation] = useState<GeoLocation | null>(null);
   const [packingItems, setPackingItems] = useState<PackingItem[]>([]);
+  const [alerts, setAlerts] = useState<CountryAlert[]>([]);
   const [travelInfo, setTravelInfo] = useState<TravelInfo | null>(null);
 
   const handleSubmit = async (info: TravelInfo) => {
@@ -39,8 +41,10 @@ function App() {
 
       setWeather(weatherData);
       setTravelInfo(info);
-      const items = generatePackingList(weatherData, info);
+
+      const { items, alerts: countryAlerts } = generatePackingSuggestions(weatherData, info);
       setPackingItems(items);
+      setAlerts(countryAlerts);
     } catch (e) {
       setError('エラーが発生しました。もう一度お試しください。');
       console.error(e);
@@ -74,8 +78,17 @@ function App() {
     setWeather([]);
     setLocation(null);
     setPackingItems([]);
+    setAlerts([]);
     setTravelInfo(null);
     setError(null);
+  };
+
+  const purposeLabels: Record<TravelInfo['purpose'], string> = {
+    leisure: '観光',
+    business: '出張',
+    adventure: 'アクティブ',
+    date: 'デート',
+    camping: 'キャンプ',
   };
 
   return (
@@ -85,10 +98,10 @@ function App() {
         <header className="text-center mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center gap-3">
             <span className="text-4xl">🧳</span>
-            Travel Packing Forecaster
+            旅行パッキング予報士
           </h1>
           <p className="text-gray-600">
-            旅行先の天気予報に基づいて、最適なパッキングリストを提案します
+            天気予報×文化情報で「忘れがちな物」まで完全カバー
           </p>
           <p className="text-xs text-gray-400 mt-2">v{VERSION}</p>
         </header>
@@ -116,6 +129,9 @@ function App() {
                   <div>
                     <div className="font-semibold text-gray-800">
                       {location?.name} への旅行
+                      <span className="ml-2 text-sm font-normal text-gray-500">
+                        ({purposeLabels[travelInfo.purpose]})
+                      </span>
                     </div>
                     <div className="text-sm text-gray-500">
                       {new Date(travelInfo.startDate).toLocaleDateString('ja-JP')} 〜{' '}
@@ -129,6 +145,13 @@ function App() {
                 >
                   やり直す
                 </button>
+              </div>
+            )}
+
+            {/* Alerts */}
+            {alerts.length > 0 && (
+              <div className="bg-white rounded-2xl p-6 shadow-sm">
+                <AlertDisplay alerts={alerts} />
               </div>
             )}
 
@@ -147,8 +170,8 @@ function App() {
 
         {/* Footer */}
         <footer className="mt-12 text-center text-sm text-gray-500">
-          <p>天気データ: Open-Meteo API (無料・APIキー不要)</p>
-          <p className="mt-1">v{VERSION}</p>
+          <p>天気データ: Open-Meteo API</p>
+          <p className="mt-1">v{VERSION} - 文化情報・忘れがち警告搭載</p>
         </footer>
       </div>
     </div>
