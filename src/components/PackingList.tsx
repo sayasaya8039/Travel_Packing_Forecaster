@@ -45,9 +45,9 @@ export function PackingList({ items, onToggle, onRemove, onAdd }: Props) {
   };
 
   return (
-    <div className="bg-white rounded-2xl p-6 shadow-sm">
-      <div className="flex items-center justify-between mb-6">
-        <h2 className="text-xl font-bold text-gray-800 flex items-center gap-2">
+    <div className="bg-white rounded-2xl p-4 sm:p-6 shadow-sm">
+      <div className="flex items-center justify-between mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl font-bold text-gray-800 flex items-center gap-2">
           <span>🧳</span> パッキングリスト
         </h2>
         <div className="text-sm text-gray-500">
@@ -56,7 +56,7 @@ export function PackingList({ items, onToggle, onRemove, onAdd }: Props) {
       </div>
 
       {/* Progress bar */}
-      <div className="mb-6">
+      <div className="mb-4 sm:mb-6">
         <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
           <div
             className="h-full bg-gradient-to-r from-green-400 to-emerald-500 transition-all duration-500"

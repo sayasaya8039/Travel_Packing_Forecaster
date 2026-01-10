@@ -34,12 +34,12 @@ export function TravelForm({ onSubmit, loading }: Props) {
           value={destination}
           onChange={(e) => setDestination(e.target.value)}
           placeholder="例: 東京、Paris、New York"
-          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+          className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
           required
         />
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
             出発日
@@ -50,7 +50,7 @@ export function TravelForm({ onSubmit, loading }: Props) {
             onChange={(e) => setStartDate(e.target.value)}
             min={today}
             max={maxDate}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
             required
           />
         </div>
@@ -64,7 +64,7 @@ export function TravelForm({ onSubmit, loading }: Props) {
             onChange={(e) => setEndDate(e.target.value)}
             min={startDate || today}
             max={maxDate}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all text-base"
             required
           />
         </div>
@@ -74,7 +74,7 @@ export function TravelForm({ onSubmit, loading }: Props) {
         <label className="block text-sm font-medium text-gray-700 mb-2">
           旅行の目的
         </label>
-        <div className="grid grid-cols-5 gap-2">
+        <div className="grid grid-cols-3 sm:grid-cols-5 gap-2">
           {[
             { value: 'leisure', label: '観光', icon: '🏖️' },
             { value: 'business', label: '出張', icon: '💼' },
@@ -86,13 +86,13 @@ export function TravelForm({ onSubmit, loading }: Props) {
               key={opt.value}
               type="button"
               onClick={() => setPurpose(opt.value as TravelInfo['purpose'])}
-              className={`px-2 py-3 rounded-xl border-2 transition-all ${
+              className={`px-2 py-3 rounded-xl border-2 transition-all touch-manipulation ${
                 purpose === opt.value
                   ? 'border-blue-500 bg-blue-50 text-blue-700'
-                  : 'border-gray-200 hover:border-gray-300'
+                  : 'border-gray-200 hover:border-gray-300 active:bg-gray-100'
               }`}
             >
-              <span className="text-xl">{opt.icon}</span>
+              <span className="text-xl sm:text-2xl">{opt.icon}</span>
               <span className="block text-xs mt-1">{opt.label}</span>
             </button>
           ))}
@@ -102,7 +102,7 @@ export function TravelForm({ onSubmit, loading }: Props) {
       <button
         type="submit"
         disabled={loading || !destination || !startDate || !endDate}
-        className="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98]"
+        className="w-full py-4 px-6 bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-semibold rounded-xl hover:from-blue-600 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all transform hover:scale-[1.02] active:scale-[0.98] touch-manipulation text-base"
       >
         {loading ? (
           <span className="flex items-center justify-center gap-2">
