@@ -2,12 +2,7 @@ import { Hono } from 'hono';
 import { cors } from 'hono/cors';
 import { GoogleGenerativeAI } from '@google/generative-ai';
 
-// 環境変数の型定義
-type Bindings = {
-  GEMINI_API_KEY: string;
-};
-
-const app = new Hono<{ Bindings: Bindings }>();
+const app = new Hono();
 
 // CORS設定
 app.use('/*', cors({
@@ -17,7 +12,7 @@ app.use('/*', cors({
     'http://localhost:4173',
   ],
   allowMethods: ['GET', 'POST', 'OPTIONS'],
-  allowHeaders: ['Content-Type'],
+  allowHeaders: ['Content-Type', 'X-API-Key'],
 }));
 
 // ヘルスチェック
@@ -64,9 +59,10 @@ interface SuggestRequest {
 // Gemini APIでパッキング提案を生成
 app.post('/api/suggest', async (c) => {
   try {
-    const apiKey = c.env.GEMINI_API_KEY;
+    // ユーザーが提供するAPIキーをヘッダーから取得
+    const apiKey = c.req.header('X-API-Key');
     if (!apiKey) {
-      return c.json({ error: 'API key not configured' }, 500);
+      return c.json({ error: 'API key is required. Please provide your Gemini API key.' }, 401);
     }
 
     const body = await c.req.json<SuggestRequest>();

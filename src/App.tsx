@@ -8,7 +8,8 @@ import { generatePackingSuggestions, getCountryInfo } from './services/packingSu
 import { getAISuggestions, checkApiHealth } from './services/geminiApi';
 import type { TravelInfo, WeatherData, PackingItem, GeoLocation, CountryAlert } from './types';
 
-const VERSION = '2.1.0';
+const VERSION = '2.2.0';
+const API_KEY_STORAGE_KEY = 'gemini_api_key';
 
 function App() {
   const [loading, setLoading] = useState(false);
@@ -21,11 +22,27 @@ function App() {
   const [travelInfo, setTravelInfo] = useState<TravelInfo | null>(null);
   const [aiTips, setAiTips] = useState<string[]>([]);
   const [apiAvailable, setApiAvailable] = useState<boolean | null>(null);
+  const [geminiApiKey, setGeminiApiKey] = useState('');
+  const [showApiKeyInput, setShowApiKeyInput] = useState(false);
 
-  // APIの健全性チェック
+  // APIの健全性チェック & ローカルストレージからAPIキー読み込み
   useEffect(() => {
     checkApiHealth().then(setApiAvailable);
+    const savedKey = localStorage.getItem(API_KEY_STORAGE_KEY);
+    if (savedKey) {
+      setGeminiApiKey(savedKey);
+    }
   }, []);
+
+  // APIキーをローカルストレージに保存
+  const handleApiKeyChange = (key: string) => {
+    setGeminiApiKey(key);
+    if (key) {
+      localStorage.setItem(API_KEY_STORAGE_KEY, key);
+    } else {
+      localStorage.removeItem(API_KEY_STORAGE_KEY);
+    }
+  };
 
   const handleSubmit = async (info: TravelInfo) => {
     setLoading(true);
@@ -57,11 +74,11 @@ function App() {
       setAlerts(countryAlerts);
       setLoading(false);
 
-      // AI提案を非同期で取得（バックグラウンド）
-      if (apiAvailable) {
+      // AI提案を非同期で取得（バックグラウンド）- APIキーがある場合のみ
+      if (apiAvailable && geminiApiKey) {
         setAiLoading(true);
         try {
-          const aiResponse = await getAISuggestions(info, weatherData, countryInfo);
+          const aiResponse = await getAISuggestions(info, weatherData, geminiApiKey, countryInfo);
           if (aiResponse?.success && aiResponse.data) {
             // AIからの追加アイテムをマージ
             const existingNames = new Set(items.map((i) => i.name.toLowerCase()));
@@ -179,8 +196,67 @@ function App() {
 
         {/* Main content */}
         {packingItems.length === 0 ? (
-          <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
-            <TravelForm onSubmit={handleSubmit} loading={loading} />
+          <div className="space-y-4">
+            {/* API Key Input */}
+            <div className="bg-white rounded-2xl shadow-sm p-4">
+              <button
+                onClick={() => setShowApiKeyInput(!showApiKeyInput)}
+                className="w-full flex items-center justify-between text-left"
+              >
+                <div className="flex items-center gap-2">
+                  <span className="text-xl">🤖</span>
+                  <span className="font-medium text-gray-700">AI機能設定</span>
+                  {geminiApiKey && (
+                    <span className="text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full">
+                      設定済み
+                    </span>
+                  )}
+                </div>
+                <span className="text-gray-400">{showApiKeyInput ? '▲' : '▼'}</span>
+              </button>
+
+              {showApiKeyInput && (
+                <div className="mt-4 space-y-3">
+                  <p className="text-sm text-gray-600">
+                    Gemini API Keyを入力すると、AIがパーソナライズされた提案を生成します。
+                  </p>
+                  <div className="flex gap-2">
+                    <input
+                      type="password"
+                      value={geminiApiKey}
+                      onChange={(e) => handleApiKeyChange(e.target.value)}
+                      placeholder="Gemini API Key を入力"
+                      className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent text-sm"
+                    />
+                    {geminiApiKey && (
+                      <button
+                        onClick={() => handleApiKeyChange('')}
+                        className="px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"
+                      >
+                        削除
+                      </button>
+                    )}
+                  </div>
+                  <p className="text-xs text-gray-500">
+                    APIキーは
+                    <a
+                      href="https://aistudio.google.com/apikey"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-purple-600 hover:underline ml-1"
+                    >
+                      Google AI Studio
+                    </a>
+                    で無料で取得できます。キーはブラウザに保存されます。
+                  </p>
+                </div>
+              )}
+            </div>
+
+            {/* Travel Form */}
+            <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
+              <TravelForm onSubmit={handleSubmit} loading={loading} />
+            </div>
           </div>
         ) : (
           <div className="space-y-6">
@@ -262,7 +338,10 @@ function App() {
           <p>天気データ: Open-Meteo API | AI: Gemini</p>
           <p className="mt-1">v{VERSION} - AI提案・文化情報・忘れがち警告搭載</p>
           {apiAvailable === false && (
-            <p className="mt-2 text-orange-500">AI機能は現在利用できません</p>
+            <p className="mt-2 text-orange-500">AIサーバーに接続できません</p>
+          )}
+          {!geminiApiKey && apiAvailable && (
+            <p className="mt-2 text-purple-500">AI機能を使うにはAPIキーを設定してください</p>
           )}
         </footer>
       </div>

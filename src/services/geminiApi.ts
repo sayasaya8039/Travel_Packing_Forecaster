@@ -23,8 +23,13 @@ interface GeminiResponse {
 export async function getAISuggestions(
   travelInfo: TravelInfo,
   weather: WeatherData[],
+  apiKey: string,
   countryInfo?: CountryInfo
 ): Promise<GeminiResponse | null> {
+  if (!apiKey) {
+    return null;
+  }
+
   try {
     // 天気データを集計
     const avgTempMax = weather.reduce((sum, w) => sum + w.tempMax, 0) / weather.length;
@@ -57,6 +62,7 @@ export async function getAISuggestions(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        'X-API-Key': apiKey,
       },
       body: JSON.stringify(requestBody),
     });
