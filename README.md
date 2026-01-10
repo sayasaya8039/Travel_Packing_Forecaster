@@ -1,73 +1,124 @@
-# React + TypeScript + Vite
+# 🧳 旅行パッキング予報士
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+天気予報×文化情報×AIで「忘れがちな物」まで完全カバーするパッキングリスト作成アプリ
 
-Currently, two official plugins are available:
+[![Deploy](https://img.shields.io/badge/Cloudflare-Pages-F38020?logo=cloudflare)](https://travel-packing-forecaster.pages.dev)
+[![Version](https://img.shields.io/badge/version-2.2.0-blue)](https://github.com/sayasaya8039/Travel_Packing_Forecaster)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🌐 デモ
 
-## React Compiler
+**https://travel-packing-forecaster.pages.dev**
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## ✨ 機能
 
-## Expanding the ESLint configuration
+### 基本機能
+- 📍 **行き先の天気予報取得** - Open-Meteo APIで最大16日間の天気を取得
+- 🌡️ **天気に基づいたパッキング提案** - 気温・降水確率・湿度から最適なアイテムを提案
+- ✅ **チェックリスト管理** - アイテムの追加・削除・チェックが可能
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### AI機能（Gemini連携）
+- 🤖 **AIパーソナライズ提案** - 旅行目的・行き先に合わせた「忘れがちなアイテム」を提案
+- 💡 **現地アドバイス** - 文化・習慣に関するTipsを自動生成
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 文化情報
+- 🔌 **コンセント情報** - 行き先のプラグタイプ・電圧を自動表示
+- 🎌 **文化的注意点** - 各国の習慣・マナーに関する警告
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🛠️ 技術スタック
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| 種類 | 技術 |
+|------|------|
+| フロントエンド | React 19 + TypeScript + Vite 7 |
+| スタイリング | Tailwind CSS 4 |
+| API | Cloudflare Workers + Hono |
+| AI | Google Gemini 1.5 Flash |
+| 天気 | Open-Meteo API |
+| ホスティング | Cloudflare Pages / Workers |
+
+## 🚀 セットアップ
+
+### 必要要件
+- Node.js 20+
+- pnpm 10+
+
+### インストール
+
+```bash
+# クローン
+git clone https://github.com/sayasaya8039/Travel_Packing_Forecaster.git
+cd Travel_Packing_Forecaster
+
+# 依存関係インストール
+pnpm install
+
+# 開発サーバー起動
+pnpm dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### APIセットアップ（オプション）
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+AI機能を使用する場合：
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+cd api
+pnpm install
+pnpm dev  # localhost:8787 で起動
 ```
+
+## 📦 デプロイ
+
+### Cloudflare Pagesへデプロイ
+
+```bash
+# ビルド
+pnpm build
+
+# Pagesプロジェクト作成（初回のみ）
+npx wrangler pages project create travel-packing-forecaster
+
+# デプロイ
+npx wrangler pages deploy dist --project-name=travel-packing-forecaster
+```
+
+### APIデプロイ
+
+```bash
+cd api
+pnpm run deploy
+```
+
+## 🔑 Gemini API Key
+
+1. [Google AI Studio](https://aistudio.google.com/apikey) でAPIキーを取得
+2. アプリの「AI機能設定」にキーを入力
+3. キーはブラウザのローカルストレージに保存（サーバーには送信されません）
+
+## 📁 プロジェクト構成
+
+```
+Travel_Packing_Forecaster/
+├── src/
+│   ├── components/      # UIコンポーネント
+│   ├── services/        # API連携
+│   ├── data/            # 国別情報データ
+│   ├── types.ts         # 型定義
+│   └── App.tsx          # メインアプリ
+├── api/
+│   └── src/index.ts     # Cloudflare Workers API
+├── dist/                # ビルド出力
+└── package.json
+```
+
+## 🌍 対応国
+
+日本、韓国、中国、台湾、タイ、ベトナム、シンガポール、インドネシア、フィリピン、マレーシア、アメリカ、カナダ、イギリス、フランス、ドイツ、イタリア、スペイン、オーストラリアなど主要国に対応
+
+## 📄 ライセンス
+
+MIT
+
+## 🙏 クレジット
+
+- 天気データ: [Open-Meteo](https://open-meteo.com/)
+- AI: [Google Gemini](https://ai.google.dev/)
+- アイコン: 絵文字

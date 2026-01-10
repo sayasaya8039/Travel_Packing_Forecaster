@@ -321,9 +321,9 @@ packages:
       debug: ^4.3.2
       js-yaml: ^4.1.1
   @types/node:
-    version: 25.0.5
-    resolved: sha512-FuLxeLuSVOqHPxSN1fkcD8DLU21gAP7nCKqGRJ/FglbCUBs0NYN6TpHcdmyLeh8C0KwGIaZQJSv+OYG+KZz+Gw==
-    integrity: https://registry.npmjs.org/@types/node/-/node-25.0.5.tgz
+    version: 25.0.6
+    resolved: sha512-NNu0sjyNxpoiW3YuVFfNz7mxSQ+S4X2G28uqg2s+CzoqoQjLPsWSbsFFyztIAqt2vb8kfEAsJNepMGPTxFDx3Q==
+    integrity: https://registry.npmjs.org/@types/node/-/node-25.0.6.tgz
     dependencies:
       undici-types: ~7.16.0
   postcss:
@@ -578,9 +578,9 @@ packages:
     dependencies:
       @types/estree: 1.0.8
   @types/react:
-    version: 19.2.7
-    resolved: sha512-MWtvHrGZLFttgeEj28VXHxpmwYbor/ATPYbBfSFZEIRK0ecCFLl2Qo55z52Hss+UV9CRN7trSeq1zbgx7YDWWg==
-    integrity: https://registry.npmjs.org/@types/react/-/react-19.2.7.tgz
+    version: 19.2.8
+    resolved: sha512-3MbSL37jEchWZz2p2mjntRZtPt837ij10ApxKfgmXCTuHWagYg7iA5bqPw6C8BMPfwidlvfPI/fxOc42HLhcyg==
+    integrity: https://registry.npmjs.org/@types/react/-/react-19.2.8.tgz
     dependencies:
       csstype: ^3.2.2
   esbuild:
