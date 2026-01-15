@@ -1,12 +1,16 @@
 import type { WeatherData, GeoLocation } from '../types';
+import { convertToEnglishCityName } from '../data/mappings';
 
 const OPEN_METEO_BASE = 'https://api.open-meteo.com/v1';
 const GEOCODING_BASE = 'https://geocoding-api.open-meteo.com/v1';
 
 export async function geocodeCity(city: string): Promise<GeoLocation | null> {
   try {
+    // 日本語・カタカナ入力を英語に変換
+    const englishCityName = convertToEnglishCityName(city);
+    
     const res = await fetch(
-      `${GEOCODING_BASE}/search?name=${encodeURIComponent(city)}&count=1&language=ja&format=json`
+      `${GEOCODING_BASE}/search?name=${encodeURIComponent(englishCityName)}&count=1&language=ja&format=json`
     );
     const data = await res.json();
     if (data.results && data.results.length > 0) {
@@ -44,7 +48,7 @@ export async function getWeatherForecast(
       2: { condition: '曇り', icon: '⛅' },
       3: { condition: '曇天', icon: '☁️' },
       45: { condition: '霧', icon: '🌫️' },
-      48: { condition: '霧氷', icon: '🌫️' },
+      47: { condition: '霧氷', icon: '🌫️' },
       51: { condition: '小雨', icon: '🌧️' },
       53: { condition: '雨', icon: '🌧️' },
       55: { condition: '大雨', icon: '🌧️' },
