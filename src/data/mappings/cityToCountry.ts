@@ -64,7 +64,7 @@ export const cityMappings: CityMapping[] = [
 
 
   // China
-  { city: 'Beijing', cityJa: '北京', countryCode: 'CN', aliases: ['Peking', 'ペキン'] },
+  { city: 'Beijing', cityJa: '北京', countryCode: 'CN', aliases: ['Peking', 'ペキン', 'ぺきん'] },
   { city: 'Shanghai', cityJa: '上海', countryCode: 'CN', aliases: ['シャンハイ'] },
   { city: 'Guangzhou', cityJa: '広州', countryCode: 'CN', aliases: ['Canton', 'コウシュウ'] },
   { city: 'Shenzhen', cityJa: '深圳', countryCode: 'CN', aliases: ['シンセン'] },
@@ -81,7 +81,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Qingdao', cityJa: '青島', countryCode: 'CN', aliases: ['チンタオ'] },
 
   // South Korea
-  { city: 'Seoul', cityJa: 'ソウル', countryCode: 'KR', aliases: ['서울'] },
+  { city: 'Seoul', cityJa: 'ソウル', countryCode: 'KR', aliases: ['서울', 'そうる'] },
   { city: 'Busan', cityJa: '釜山', countryCode: 'KR', aliases: ['부산', 'プサン'] },
   { city: 'Incheon', cityJa: '仁川', countryCode: 'KR', aliases: ['인천', 'インチョン'] },
   { city: 'Daegu', cityJa: '大邱', countryCode: 'KR', aliases: ['대구', 'テグ'] },
@@ -100,7 +100,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Macau', cityJa: 'マカオ', countryCode: 'MO', aliases: ['Macao', '澳門'] },
 
   // Thailand
-  { city: 'Bangkok', cityJa: 'バンコク', countryCode: 'TH', aliases: ['Krung Thep'] },
+  { city: 'Bangkok', cityJa: 'バンコク', countryCode: 'TH', aliases: ['Krung Thep', 'ばんこく'] },
   { city: 'Chiang Mai', cityJa: 'チェンマイ', countryCode: 'TH', aliases: ['Chiangmai'] },
   { city: 'Phuket', cityJa: 'プーケット', countryCode: 'TH', aliases: [] },
   { city: 'Pattaya', cityJa: 'パタヤ', countryCode: 'TH', aliases: [] },
@@ -236,7 +236,7 @@ export const cityMappings: CityMapping[] = [
 
   // ===== EUROPE =====
   // UK
-  { city: 'London', cityJa: 'ロンドン', countryCode: 'GB', aliases: [] },
+  { city: 'London', cityJa: 'ロンドン', countryCode: 'GB', aliases: ['ろんどん'] },
   { city: 'Edinburgh', cityJa: 'エディンバラ', countryCode: 'GB', aliases: [] },
   { city: 'Manchester', cityJa: 'マンチェスター', countryCode: 'GB', aliases: [] },
   { city: 'Liverpool', cityJa: 'リバプール', countryCode: 'GB', aliases: [] },
@@ -251,7 +251,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Belfast', cityJa: 'ベルファスト', countryCode: 'GB', aliases: [] },
 
   // France
-  { city: 'Paris', cityJa: 'パリ', countryCode: 'FR', aliases: [] },
+  { city: 'Paris', cityJa: 'パリ', countryCode: 'FR', aliases: ['ぱり'] },
   { city: 'Nice', cityJa: 'ニース', countryCode: 'FR', aliases: [] },
   { city: 'Lyon', cityJa: 'リヨン', countryCode: 'FR', aliases: [] },
   { city: 'Marseille', cityJa: 'マルセイユ', countryCode: 'FR', aliases: [] },
@@ -262,7 +262,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Monaco', cityJa: 'モナコ', countryCode: 'MC', aliases: ['Monte Carlo'] },
 
   // Germany
-  { city: 'Berlin', cityJa: 'ベルリン', countryCode: 'DE', aliases: [] },
+  { city: 'Berlin', cityJa: 'ベルリン', countryCode: 'DE', aliases: ['べるりん'] },
   { city: 'Munich', cityJa: 'ミュンヘン', countryCode: 'DE', aliases: ['München'] },
   { city: 'Frankfurt', cityJa: 'フランクフルト', countryCode: 'DE', aliases: [] },
   { city: 'Hamburg', cityJa: 'ハンブルク', countryCode: 'DE', aliases: [] },
@@ -274,7 +274,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Nuremberg', cityJa: 'ニュルンベルク', countryCode: 'DE', aliases: ['Nürnberg'] },
 
   // Italy
-  { city: 'Rome', cityJa: 'ローマ', countryCode: 'IT', aliases: ['Roma'] },
+  { city: 'Rome', cityJa: 'ローマ', countryCode: 'IT', aliases: ['Roma', 'ろーま'] },
   { city: 'Milan', cityJa: 'ミラノ', countryCode: 'IT', aliases: ['Milano'] },
   { city: 'Venice', cityJa: 'ヴェネツィア', countryCode: 'IT', aliases: ['Venezia'] },
   { city: 'Florence', cityJa: 'フィレンツェ', countryCode: 'IT', aliases: ['Firenze'] },
@@ -412,7 +412,7 @@ export const cityMappings: CityMapping[] = [
 
   // ===== AMERICAS =====
   // USA
-  { city: 'New York', cityJa: 'ニューヨーク', countryCode: 'US', aliases: ['NYC', 'New York City'] },
+  { city: 'New York', cityJa: 'ニューヨーク', countryCode: 'US', aliases: ['NYC', 'New York City', 'にゅーよーく'] },
   { city: 'Los Angeles', cityJa: 'ロサンゼルス', countryCode: 'US', aliases: ['LA'] },
   { city: 'San Francisco', cityJa: 'サンフランシスコ', countryCode: 'US', aliases: ['SF'] },
   { city: 'Las Vegas', cityJa: 'ラスベガス', countryCode: 'US', aliases: [] },
@@ -437,7 +437,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Anchorage', cityJa: 'アンカレッジ', countryCode: 'US', aliases: [] },
 
   // Canada
-  { city: 'Toronto', cityJa: 'トロント', countryCode: 'CA', aliases: [] },
+  { city: 'Toronto', cityJa: 'トロント', countryCode: 'CA', aliases: ['とろんと'] },
   { city: 'Vancouver', cityJa: 'バンクーバー', countryCode: 'CA', aliases: [] },
   { city: 'Montreal', cityJa: 'モントリオール', countryCode: 'CA', aliases: ['Montréal'] },
   { city: 'Calgary', cityJa: 'カルガリー', countryCode: 'CA', aliases: [] },
@@ -529,7 +529,7 @@ export const cityMappings: CityMapping[] = [
   { city: 'Abidjan', cityJa: 'アビジャン', countryCode: 'CI', aliases: [] },
 
   // ===== OCEANIA =====
-  { city: 'Sydney', cityJa: 'シドニー', countryCode: 'AU', aliases: [] },
+  { city: 'Sydney', cityJa: 'シドニー', countryCode: 'AU', aliases: ['しどにー'] },
   { city: 'Melbourne', cityJa: 'メルボルン', countryCode: 'AU', aliases: [] },
   { city: 'Brisbane', cityJa: 'ブリスベン', countryCode: 'AU', aliases: [] },
   { city: 'Perth', cityJa: 'パース', countryCode: 'AU', aliases: [] },

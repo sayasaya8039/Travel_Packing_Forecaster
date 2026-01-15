@@ -1,0 +1,382 @@
+// Oceania - 14 countries + 13 territories = 27 entries
+// ISO 3166-1 alpha-2 codes
+
+import type { CountryInfo } from '../types';
+
+export const oceaniaCountries: CountryInfo[] = [
+  // Australia and New Zealand
+  {
+    code: 'AU',
+    name: 'Australia',
+    nameJa: 'オーストラリア',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'arid',
+    region: 'Oceania',
+    subregion: 'Australia and New Zealand',
+    culturalNotes: ['チップは不要', '左側通行', '日差しが強い'],
+    commonItems: ['日焼け止め', '帽子', 'サングラス']
+  },
+  {
+    code: 'NZ',
+    name: 'New Zealand',
+    nameJa: 'ニュージーランド',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'temperate',
+    region: 'Oceania',
+    subregion: 'Australia and New Zealand',
+    culturalNotes: ['チップは不要', '左側通行', 'マオリ文化'],
+    commonItems: ['レイヤード衣類', 'ハイキングシューズ', '日焼け止め']
+  },
+  {
+    code: 'NF',
+    name: 'Norfolk Island',
+    nameJa: 'ノーフォーク島',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'subtropical',
+    region: 'Oceania',
+    subregion: 'Australia and New Zealand',
+    culturalNotes: ['オーストラリア領', '独自の文化', '小さな島'],
+    commonItems: ['日焼け止め', '軽い服装', '歩きやすい靴']
+  },
+
+  // Melanesia
+  {
+    code: 'FJ',
+    name: 'Fiji',
+    nameJa: 'フィジー',
+    plugTypes: ['I'],
+    voltage: 240,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Melanesia',
+    culturalNotes: ['英語・フィジー語', 'カバ儀式', 'チップは不要'],
+    commonItems: ['水着', '日焼け止め', 'リゾートウェア']
+  },
+  {
+    code: 'NC',
+    name: 'New Caledonia',
+    nameJa: 'ニューカレドニア',
+    plugTypes: ['C', 'F'],
+    voltage: 220,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Melanesia',
+    culturalNotes: ['フランス領', 'ユーロ不可・CFPフラン', 'フランス語'],
+    commonItems: ['水着', '日焼け止め', 'シュノーケル用品']
+  },
+  {
+    code: 'PG',
+    name: 'Papua New Guinea',
+    nameJa: 'パプアニューギニア',
+    plugTypes: ['I'],
+    voltage: 240,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Melanesia',
+    culturalNotes: ['800以上の言語', '部族文化', '渡航注意地域あり'],
+    commonItems: ['虫除け', '日焼け止め', 'レインジャケット']
+  },
+  {
+    code: 'SB',
+    name: 'Solomon Islands',
+    nameJa: 'ソロモン諸島',
+    plugTypes: ['G', 'I'],
+    voltage: 220,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Melanesia',
+    culturalNotes: ['英語圏', 'ダイビング天国', '第二次世界大戦の戦跡'],
+    commonItems: ['虫除け', '日焼け止め', 'ダイビング用品']
+  },
+  {
+    code: 'VU',
+    name: 'Vanuatu',
+    nameJa: 'バヌアツ',
+    plugTypes: ['C', 'G', 'I'],
+    voltage: 220,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Melanesia',
+    culturalNotes: ['英語・フランス語・ビスラマ語', '火山', 'ダイビング'],
+    commonItems: ['虫除け', '日焼け止め', 'シュノーケル用品']
+  },
+
+  // Micronesia
+  {
+    code: 'GU',
+    name: 'Guam',
+    nameJa: 'グアム',
+    plugTypes: ['A', 'B'],
+    voltage: 110,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['米国領', '日本人観光客多い', 'チップは15-20%'],
+    commonItems: ['水着', '日焼け止め', 'リゾートウェア']
+  },
+  {
+    code: 'KI',
+    name: 'Kiribati',
+    nameJa: 'キリバス',
+    plugTypes: ['I'],
+    voltage: 240,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['英語・キリバス語', '3つの時間帯', '気候変動の影響'],
+    commonItems: ['水着', '日焼け止め', '虫除け']
+  },
+  {
+    code: 'MH',
+    name: 'Marshall Islands',
+    nameJa: 'マーシャル諸島',
+    plugTypes: ['A', 'B'],
+    voltage: 120,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['英語・マーシャル語', '米国との自由連合', '核実験の歴史'],
+    commonItems: ['水着', '日焼け止め', 'シュノーケル用品']
+  },
+  {
+    code: 'FM',
+    name: 'Micronesia',
+    nameJa: 'ミクロネシア連邦',
+    plugTypes: ['A', 'B'],
+    voltage: 120,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['英語', '米国との自由連合', 'ダイビング天国'],
+    commonItems: ['水着', '日焼け止め', 'ダイビング用品']
+  },
+  {
+    code: 'NR',
+    name: 'Nauru',
+    nameJa: 'ナウル',
+    plugTypes: ['I'],
+    voltage: 240,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['英語・ナウル語', '世界最小の共和国の一つ', 'リン鉱石'],
+    commonItems: ['水着', '日焼け止め', '虫除け']
+  },
+  {
+    code: 'MP',
+    name: 'Northern Mariana Islands',
+    nameJa: '北マリアナ諸島',
+    plugTypes: ['A', 'B'],
+    voltage: 120,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['米国領', '日本人観光客多い', 'サイパン・テニアン'],
+    commonItems: ['水着', '日焼け止め', 'リゾートウェア']
+  },
+  {
+    code: 'PW',
+    name: 'Palau',
+    nameJa: 'パラオ',
+    plugTypes: ['A', 'B'],
+    voltage: 120,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['英語・パラオ語', 'ダイビングの聖地', '日本との歴史的つながり'],
+    commonItems: ['水着', '日焼け止め', 'ダイビング用品']
+  },
+
+  // Polynesia
+  {
+    code: 'AS',
+    name: 'American Samoa',
+    nameJa: '米領サモア',
+    plugTypes: ['A', 'B', 'F', 'I'],
+    voltage: 120,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['米国領', '英語・サモア語', '伝統的な村社会'],
+    commonItems: ['水着', '日焼け止め', '虫除け']
+  },
+  {
+    code: 'CK',
+    name: 'Cook Islands',
+    nameJa: 'クック諸島',
+    plugTypes: ['I'],
+    voltage: 240,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['ニュージーランドとの自由連合', '英語・マオリ語', 'リゾート'],
+    commonItems: ['水着', '日焼け止め', 'リゾートウェア']
+  },
+  {
+    code: 'PF',
+    name: 'French Polynesia',
+    nameJa: 'フランス領ポリネシア',
+    plugTypes: ['A', 'B', 'C', 'E'],
+    voltage: 220,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['フランス領', 'タヒチ・ボラボラ', 'CFPフラン使用'],
+    commonItems: ['水着', '日焼け止め', 'リゾートウェア']
+  },
+  {
+    code: 'NU',
+    name: 'Niue',
+    nameJa: 'ニウエ',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['ニュージーランドとの自由連合', '世界最小国の一つ', 'ダイビング'],
+    commonItems: ['水着', '日焼け止め', 'シュノーケル用品']
+  },
+  {
+    code: 'PN',
+    name: 'Pitcairn',
+    nameJa: 'ピトケアン諸島',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'subtropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['イギリス領', 'バウンティ号の子孫', '約50人の住民'],
+    commonItems: ['日焼け止め', '歩きやすい靴', '現金']
+  },
+  {
+    code: 'WS',
+    name: 'Samoa',
+    nameJa: 'サモア',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['英語・サモア語', 'ファアサモア（伝統文化）', 'チップは不要'],
+    commonItems: ['水着', '日焼け止め', '控えめな服装']
+  },
+  {
+    code: 'TK',
+    name: 'Tokelau',
+    nameJa: 'トケラウ',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['ニュージーランド領', '3つの環礁', '太陽光発電100%'],
+    commonItems: ['水着', '日焼け止め', '虫除け']
+  },
+  {
+    code: 'TO',
+    name: 'Tonga',
+    nameJa: 'トンガ',
+    plugTypes: ['I'],
+    voltage: 240,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['英語・トンガ語', '王国', '日曜日は安息日'],
+    commonItems: ['水着', '日焼け止め', '控えめな服装']
+  },
+  {
+    code: 'TV',
+    name: 'Tuvalu',
+    nameJa: 'ツバル',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['英語・ツバル語', '気候変動の最前線', '世界第4位の小国'],
+    commonItems: ['水着', '日焼け止め', '虫除け']
+  },
+  {
+    code: 'WF',
+    name: 'Wallis and Futuna',
+    nameJa: 'ウォリス・フツナ',
+    plugTypes: ['C', 'E'],
+    voltage: 220,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Polynesia',
+    culturalNotes: ['フランス領', 'CFPフラン使用', 'カトリック'],
+    commonItems: ['水着', '日焼け止め', '虫除け']
+  },
+
+  // US Minor Outlying Islands
+  {
+    code: 'UM',
+    name: 'United States Minor Outlying Islands',
+    nameJa: '合衆国領有小離島',
+    plugTypes: ['A', 'B'],
+    voltage: 120,
+    frequency: 60,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Micronesia',
+    culturalNotes: ['米国領', '無人島が多い', '特別な許可が必要な場合あり'],
+    commonItems: ['日焼け止め', '虫除け', '水']
+  },
+
+  // Christmas Island & Cocos Islands (Australian territories in Indian Ocean but often grouped with Oceania)
+  {
+    code: 'CX',
+    name: 'Christmas Island',
+    nameJa: 'クリスマス島',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Australia and New Zealand',
+    culturalNotes: ['オーストラリア領', 'カニの大移動', '多文化社会'],
+    commonItems: ['虫除け', '日焼け止め', 'ハイキングシューズ']
+  },
+  {
+    code: 'CC',
+    name: 'Cocos (Keeling) Islands',
+    nameJa: 'ココス諸島',
+    plugTypes: ['I'],
+    voltage: 230,
+    frequency: 50,
+    climate: 'tropical',
+    region: 'Oceania',
+    subregion: 'Australia and New Zealand',
+    culturalNotes: ['オーストラリア領', 'マレー系住民', '環礁'],
+    commonItems: ['水着', '日焼け止め', 'シュノーケル用品']
+  }
+];
